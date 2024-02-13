@@ -1,33 +1,49 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":prHourlyLimit4", ":semanticCommitTypeAll(chore)"],
-  "baseBranches": ["$default", "v7"],
+  "extends": [
+    "config:base",
+    ":prHourlyLimit4",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "baseBranches": ["next"],
   "meteor": {
     "enabled": false
   },
+  "postUpdateOptions": [
+    "yarnDedupeFewer"
+  ],
   "rangeStrategy": "bump",
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
   "packageRules": [
     {
-      "matchPackageNames": ["node"],
+      "matchPackageNames": [
+        "node"
+      ],
       "enabled": false
     },
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "matchFiles": ["package.json"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "lockFileMaintenance": {
         "enabled": true,
-        "extends": ["schedule:weekly"]
+        "extends": [
+          "schedule:weekly"
+        ]
       }
     },
     {
       "groupName": "Docs dependencies",
       "matchFiles": ["docs/package.json"],
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
     }
   ]
 }
