@@ -92,10 +92,10 @@ export function nuxtI18nHead ({ addDirAttribute = false, addSeoAttributes = fals
       if (localePath) {
         link.push({
           hid: `i18n-alt-${iso}`,
-          rel: 'alternate',
-          href: toAbsoluteUrl(localePath, baseUrl),
-          hreflang: iso
-        })
+          rel: "alternate",
+          href: decodeURIComponent(toAbsoluteUrl(localePath, baseUrl)),
+          hreflang: iso,
+        });
       }
     }
 
@@ -103,11 +103,11 @@ export function nuxtI18nHead ({ addDirAttribute = false, addSeoAttributes = fals
       const localePath = this.switchLocalePath(options.defaultLocale)
       if (localePath) {
         link.push({
-          hid: 'i18n-xd',
-          rel: 'alternate',
-          href: toAbsoluteUrl(localePath, baseUrl),
-          hreflang: 'x-default'
-        })
+          hid: "i18n-xd",
+          rel: "alternate",
+          href: decodeURIComponent(toAbsoluteUrl(localePath, baseUrl)),
+          hreflang: "x-default",
+        });
       }
     }
   }
@@ -126,7 +126,7 @@ export function nuxtI18nHead ({ addDirAttribute = false, addSeoAttributes = fals
     })
 
     if (currentRoute) {
-      let href = toAbsoluteUrl(currentRoute.path, baseUrl)
+      let href = decodeURIComponent(toAbsoluteUrl(currentRoute.path, baseUrl));
 
       const canonicalQueries = (typeof (seoAttributesOptions) !== 'boolean' && seoAttributesOptions.canonicalQueries) || []
 
