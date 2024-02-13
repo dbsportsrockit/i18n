@@ -1023,7 +1023,7 @@ describe('with rootRedirect (string)', () => {
       simple: false // Don't reject on non-2xx response
     }
     const response = await get('/', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/fr')
   })
 
@@ -1034,7 +1034,7 @@ describe('with rootRedirect (string)', () => {
       simple: false // Don't reject on non-2xx response
     }
     const response = await get('/?q=1', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/fr?q=1')
   })
 })
@@ -1096,7 +1096,7 @@ describe('prefix_and_default strategy', () => {
       simple: false // Don't reject on non-2xx response
     }
     const response = await get('/en/', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/')
   })
 
@@ -1484,7 +1484,7 @@ describe('with router base + redirectOn is root', () => {
       }
     }
     const response = await get('/app/', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/app/fr')
   })
 
@@ -1538,7 +1538,7 @@ describe('with router base + redirectOn is all', () => {
       }
     }
     const response = await get('/app/', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/app/fr')
   })
 
@@ -1552,7 +1552,7 @@ describe('with router base + redirectOn is all', () => {
       }
     }
     const response = await get('/app/simple', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/app/fr/simple')
   })
 })
@@ -1949,7 +1949,7 @@ describe('prefix + detectBrowserLanguage + redirectOn is all', () => {
       }
     }
     const response = await get('/en', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/fr')
   })
 
@@ -1963,7 +1963,7 @@ describe('prefix + detectBrowserLanguage + redirectOn is all', () => {
       }
     }
     const response = await get('/en/simple', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/fr/simple')
   })
 })
@@ -2096,7 +2096,7 @@ describe('prefix + detectBrowserLanguage + alwaysRedirect + redirectOn is all', 
       }
     }
     const response = await get('/en', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/fr')
   })
 })
@@ -2172,7 +2172,7 @@ describe('locale change hooks', () => {
       }
     }
     const response = await get('/fr', requestOptions)
-    expect(response.statusCode).toBe(302)
+    expect(response.statusCode).toBe(301)
     expect(response.headers.location).toBe('/')
   })
 })
